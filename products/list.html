@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>カテゴリ一覧 - Demo Fashion Store</title>
+<meta content="カテゴリ別の商品一覧ページです。" name="description"/>
+<meta content="検索キーワードを入力" name="keywords"/>
+<link href="../assets/css/style.css" rel="stylesheet"/>
+<link href="../assets/css/reset.css" rel="stylesheet"/>
+<script defer="" src="../assets/js/products-data.js"></script>
+<script defer="" src="../assets/js/storage.js"></script>
+<script defer="" src="../assets/js/script.js"></script>
+<script defer="" src="../assets/js/items.js"></script>
+</head>
+<body>
+<div class="wrapper">
+<header class="header" id="header">
+<div class="header-in">
+<div class="header-rogo">
+<a href="../pages/index.html">
+<img alt="Demo Fashion Store" src="../assets/img/rogo.png"/></a>
+</div>
+<nav class="nav" id="nav">
+<ul>
+<li>
+<a class="btn-icon icon-mypage" href="../pages/index.html">home</a>
+</li>
+<li class="has-child">
+<a href="#">category</a><!--子要素を持つ li にはhas-childというクラス名をつける-->
+<ul class="child-menu">
+<div class="category1_4">
+<li>
+<a class="category_selector" data-cate="all" href="#">ALL_ITEM</a>
+</li>
+<li>
+<a class="category_selector" data-cate="section_tshirt" href="#">T-SHIRTS</a>
+</li>
+<li>
+<a class="category_selector" data-cate="section_long" href="#">LONG SLEEVE T</a>
+</li>
+<li>
+<a class="category_selector" data-cate="section_foodie" href="#">FOODIE・SHIRTS</a>
+</li>
+</div>
+<div class="category5_8">
+<li>
+<a class="category_selector" data-cate="section_bag" href="#">BAG・BELT・OTHER</a>
+</li>
+<li>
+<a class="category_selector" data-cate="section_accessory" href="#">ACCESSORY</a>
+</li>
+<li>
+<a class="category_selector" data-cate="section_goods" href="#">GOODS</a>
+</li>
+<li>
+<a class="category_selector" data-cate="section_bottoms" href="#">BOTTOMS</a>
+</li>
+</div>
+</ul>
+</li>
+<li>
+<a class="btn-icon icon-mypage" href="../pages/login.html"><img alt="Myアカウント" src="../assets/img/ico_profile.svg"/></a>
+</li>
+<li>
+<a class="btn-icon icon-fav" href="../pages/favorite.html"><img alt="お気に入り" src="../assets/img/ico_heart.svg"/></a>
+</li>
+<li>
+<a class="btn-icon icon-cart" href="#" id="btn-mini-cart"><img alt="カート" src="../assets/img/ico_cart_03.svg"/></a>
+</li>
+</ul>
+</nav>
+</div>
+</header>
+<!-- item_list -->
+<div class="main_content">
+<section class="section section_tshirt">
+<div class="section_text">
+<h4 class="ruby">Tシャツ</h4>
+<h2 class="section_title">ーT SHIRTSー</h2>
+</div>
+<!-- item_container -->
+<div class="item_container">
+<div class="section_content_list">
+<ul class="item_list">
+<li class="item">
+<a class="item_wrap" href="detail.html?id=1-001">
+<div class="item_img">
+<img alt="graphic t-shirt" src="../assets/img/graphic-tshirt-black-01.png"/>
+</div>
+<div class="item_text">
+<p class="item_name">
+                        Graphic T-Shirt
+                      </p>
+<p class="item_price">¥4,400</p>
+</div>
+</a>
+</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+<!-- <button class="button">もっと見る</button> -->
+</section>
+<section class="section section_long">
+<div class="section_text">
+<h4 class="ruby">長袖Tシャツ</h4>
+<h2 class="section_title">ーLONG SLEEVE Tー</h2>
+</div>
+<!-- item_container -->
+<div class="item_container">
+<div class="section_content_list">
+<ul class="item_list">
+<li class="item">
+<a class="item_wrap" href="detail.html?id=2-001">
+<div class="item_img">
+<img alt="longsleeve shirt" src="../assets/img/longsleeve-shirt-black-01.png"/>
+</div>
+<div class="item_text">
+<p class="item_name">
+                        Longsleeve Shirt
+                      </p>
+<p class="item_price">¥5,720</p>
+</div>
+</a>
+</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+<!-- <button class="button">もっと見る</button> -->
+</section>
+<section class="section section_foodie">
+<div class="section_text">
+<h4 class="ruby">パーカー・シャツ</h4>
+<h2 class="section_title">ーFOODIE・SHIRTSー</h2>
+</div>
+<!-- item_container -->
+<div class="item_container">
+<div class="section_content_list">
+<ul class="item_list">
+<li class="item">
+<a class="item_wrap" href="detail.html?id=3-001">
+<div class="item_img">
+<img alt="oversized hoodie" src="../assets/img/oversized-hoodie-black-01.png"/>
+</div>
+<div class="item_text">
+<p class="item_name">
+                        Oversized Hoodie
+                      </p>
+<p class="item_price">¥7,700</p>
+</div>
+</a>
+</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+</div>
+<!-- <button class="button">もっと見る</button> -->
+</section>
+<section class="section section_bag">
+<div class="section_text">
+<h4 class="ruby">バッグ・ベルト・その他</h4>
+<h2 class="section_title">ーBAG・BELT・OTHERー</h2>
+</div>
+<!-- item_container -->
+<div class="item_container">
+<div class="section_content_list">
+<ul class="item_list">
+<li class="item">
+<a class="item_wrap" href="detail.html?id=5-001">
+<div class="item_img">
+<img alt="baseball cap" src="../assets/img/baseball-cap-black-01.png"/>
+</div>
+<div class="item_text">
+<p class="item_name">Baseball Cap</p>
+<p class="item_price">¥5,280</p>
+</div>
+</a>
+</li>
+</ul>
+</div>
+
+
+
+
+</div>
+<!-- <button class="button">もっと見る</button> -->
+</section>
+<section class="section section_accessory">
+<div class="section_text">
+<h4 class="ruby">アクセサリー</h4>
+<h2 class="section_title">ーACCESSORYー</h2>
+</div>
+<!-- item_container -->
+<div class="item_container">
+<div class="section_content_list">
+<ul class="item_list">
+<li class="item">
+<a class="item_wrap" href="detail.html?id=6-001">
+<div class="item_img">
+<img alt="chain bracelet" src="../assets/img/chain-bracelet-rosegold-01.png"/>
+</div>
+<div class="item_text">
+<p class="item_name">
+                        Chain Bracelet
+                      </p>
+<p class="item_price">¥3,080</p>
+</div>
+</a>
+</li>
+</ul>
+</div>
+</div>
+<!-- <button class="button">もっと見る</button> -->
+</section>
+<section class="section section_goods">
+<div class="section_text">
+<h4 class="ruby">グッズ</h4>
+<h2 class="section_title">ーGOODSー</h2>
+</div>
+<!-- item_container -->
+<div class="item_container">
+</div>
+<!-- <button class="button">もっと見る</button> -->
+</section>
+<section class="section section_bottoms">
+<div class="section_text">
+<h4 class="ruby">ボトムス</h4>
+<h2 class="section_title">ーBOTTOMSー</h2>
+</div>
+<!-- item_container -->
+<div class="item_container">
+<div class="section_content_list">
+<ul class="item_list">
+<li class="item">
+<a class="item_wrap" href="detail.html?id=8-001">
+<div class="item_img">
+<img alt="pleated skirt" src="../assets/img/pleated-skirt-black-01.png"/>
+</div>
+<div class="item_text">
+<p class="item_name">Pleated Skirt</p>
+<p class="item_price">¥6,050</p>
+</div>
+</a>
+</li>
+</ul>
+</div>
+</div>
+<!-- <button class="button">もっと見る</button> -->
+</section>
+<!-- model_list -->
+</div>
+<footer class="footer">
+<div style="text-align:center; font-size:12px; margin-bottom:10px; padding:0 10px;">
+          This website is a demo e-commerce project created for portfolio purposes.<br/>
+          Images are placeholders and not affiliated with any real brand.
+        </div>
+<div class="footer-copyright">
+<small>2025 <br>
+            Demo Fashion Store</br></small>
+</div>
+</footer>
+</div>
+<script crossorigin="anonymous" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</body>
+</html>

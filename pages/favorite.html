@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>お気に入り - Demo Fashion Store</title>
+    <meta name="description" content="お気に入りに追加した商品の一覧です。"/>
+    <meta name="keywords" content="検索キーワードを入力" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/reset.css" />
+    <script src="../assets/js/products-data.js" defer></script>
+<script src="../assets/js/storage.js" defer></script>
+<script src="../assets/js/script.js" defer></script>
+    <script src="../assets/js/favorite.js" defer></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header" id="header">
+        <div class="header-in">
+          <div class="header-rogo">
+            <a href="index.html">
+              <img src="../assets/img/rogo.png" alt="Demo Fashion Store"
+            /></a>
+          </div>
+          <nav id="nav" class="nav">
+            <ul>
+              <li>
+                <a class="btn-icon icon-mypage" href="index.html">home</a>
+              </li>
+              <li class="has-child">
+                <a href="#">category</a
+                ><!--子要素を持つ li にはhas-childというクラス名をつける-->
+                <ul class="child-menu">
+                  <div class="category1_4">
+                    <li>
+                      <a href="#" class="category_selector" data-cate="all"
+                        >ALL_ITEM</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="category_selector"
+                        data-cate="section_tshirt"
+                        >T-SHIRTS</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="category_selector"
+                        data-cate="section_long"
+                        >LONG SLEEVE T</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="category_selector"
+                        data-cate="section_foodie"
+                        >FOODIE・SHIRTS</a
+                      >
+                    </li>
+                  </div>
+                  <div class="category5_8">
+                    <li>
+                      <a
+                        href="#"
+                        class="category_selector"
+                        data-cate="section_bag"
+                        >BAG・BELT・OTHER</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="category_selector"
+                        data-cate="section_accessory"
+                        >ACCESSORY</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="category_selector"
+                        data-cate="section_goods"
+                        >GOODS</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="category_selector"
+                        data-cate="section_bottoms"
+                        >BOTTOMS</a
+                      >
+                    </li>
+                  </div>
+                </ul>
+              </li>
+              <li>
+                <a class="btn-icon icon-mypage" href="login.html"
+                  ><img src="../assets/img/ico_profile.svg" alt="Myアカウント"
+                /></a>
+              </li>
+              <li>
+                <a class="btn-icon icon-fav" href="favorite.html"
+                  ><img src="../assets/img/ico_heart.svg" alt="お気に入り"
+                /></a>
+              </li>
+              <li>
+                <a class="btn-icon icon-cart" id="btn-mini-cart" href="cart.html"
+                  ><img src="../assets/img/ico_cart_03.svg" alt="カート"
+                /></a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <!-- item_list -->
+      <div class="main_content">
+        <div class="favorite_container"></div>
+      </div>
+
+    <footer class="footer">
+        <div style="text-align:center; font-size:12px; margin-bottom:10px; padding:0 10px;">
+          This website is a demo e-commerce project created for portfolio purposes.<br>
+          Images are placeholders and not affiliated with any real brand.
+        </div>
+        <div class="footer-copyright">
+          <small
+            >2025 <br />
+            Demo Fashion Store</small
+          >
+        </div>
+      </footer>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

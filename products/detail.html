@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>商品詳細 - Demo Fashion Store</title>
+    <meta name="description" content="商品の詳細情報・サイズ・カラーの選択ができます。"/>
+    <meta name="keywords" content="検索キーワードを入力" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/reset.css" />
+    <script src="../assets/js/products-data.js" defer></script>
+    <script src="../assets/js/storage.js" defer></script>
+    <script src="../assets/js/script.js" defer></script>
+    <script src="../assets/js/product-renderer.js" defer></script>
+    <script src="../assets/js/shopping.js" defer></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header" id="header">
+        <div class="header-in">
+          <div class="header-rogo">
+            <a href="../pages/index.html">
+              <img src="../assets/img/rogo.png" alt="Demo Fashion Store" />
+            </a>
+          </div>
+          <nav id="nav" class="nav">
+            <ul>
+              <li>
+                <a class="btn-icon icon-mypage" href="../pages/index.html">home</a>
+              </li>
+              <li class="has-child">
+                <a href="#">category</a>
+                <ul class="child-menu">
+                  <div class="category1_4">
+                    <li><a href="#" class="category_selector" data-cate="all">ALL_ITEM</a></li>
+                    <li><a href="#" class="category_selector" data-cate="section_tshirt">T-SHIRTS</a></li>
+                    <li><a href="#" class="category_selector" data-cate="section_long">LONG SLEEVE T</a></li>
+                    <li><a href="#" class="category_selector" data-cate="section_foodie">FOODIE・SHIRTS</a></li>
+                  </div>
+                  <div class="category5_8">
+                    <li><a href="#" class="category_selector" data-cate="section_bag">BAG・BELT・OTHER</a></li>
+                    <li><a href="#" class="category_selector" data-cate="section_accessory">ACCESSORY</a></li>
+                    <li><a href="#" class="category_selector" data-cate="section_goods">GOODS</a></li>
+                    <li><a href="#" class="category_selector" data-cate="section_bottoms">BOTTOMS</a></li>
+                  </div>
+                </ul>
+              </li>
+              <li>
+                <a class="btn-icon icon-mypage" href="../pages/login.html">
+                  <img src="../assets/img/ico_profile.svg" alt="Myアカウント" />
+                </a>
+              </li>
+              <li>
+                <a class="btn-icon icon-fav" href="../pages/favorite.html">
+                  <img src="../assets/img/ico_heart.svg" alt="お気に入り" />
+                </a>
+              </li>
+              <li>
+                <a class="btn-icon icon-cart" id="btn-mini-cart" href="../pages/cart.html">
+                  <img src="../assets/img/ico_cart_03.svg" alt="カート" />
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <main class="main">
+        <!-- item_list -->
+        <div class="main_content">
+          <section class="section">
+            <!-- item_container -->
+            <div class="shopping_container" id="product_container">
+              <div class="product_left" id="product_gallery">
+                <div class="main_image">
+                  <!-- JSでメイン画像が挿入されます -->
+                </div>
+                <div class="thumbnail_container">
+                  <!-- JSでサムネイル画像（最大2枚）が挿入されます -->
+                </div>
+              </div>
+
+              <div class="product_right">
+                <h2 class="product_name">
+                  <!-- JSで商品名が挿入されます -->
+                </h2>
+                <p class="product_price">
+                  <!-- JSで価格が挿入されます -->
+                </p>
+                <p class="product_description">
+                  <!-- JSで説明が挿入されます -->
+                </p>
+
+                <div class="product_size">
+                  <label for="size">サイズ:</label>
+                  <select id="size" name="size">
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                  </select>
+                </div>
+                
+                <div class="product_color">
+                  <label for="color">色:</label>
+                  <select id="color" name="color">
+                    <option value="black">BLACK</option>
+                    <option value="white">WHITE</option>
+                  </select>
+                </div>
+
+                <div class="product_amount">
+                  <label for="amount">数量:</label>
+                  <select id="amount" name="amount">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                </div>
+                
+                <div class="space"></div>
+                <button class="wishlist_button">♡ 欲しいものリストに追加</button>
+                <button class="cart_button">カートに入れる</button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div style="text-align:center; font-size:12px; margin-bottom:10px; padding:0 10px;">
+          This website is a demo e-commerce project created for portfolio purposes.<br>
+          Images are placeholders and not affiliated with any real brand.
+        </div>
+        <div class="footer-copyright">
+          <small>2025 <br />Demo Fashion Store</small>
+        </div>
+      </footer>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    </body>
+</html>
