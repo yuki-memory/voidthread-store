@@ -1,11 +1,3 @@
-/.env* /404.html 404
-/*.db /404.html 404
-/*.sqlite /404.html 404
-/*.sqlite3 /404.html 404
-/*.sql /404.html 404
-/*.zip /404.html 404
-/*.mp3 /404.html 404
-/*.wav /404.html 404
-/*.flac /404.html 404
-/*.m4a /404.html 404
-/*.ogg /404.html 404
+# Cloudflare Pages redirects.
+# Do not use this file to block secret files. Keep secrets out of the publish directory.
+# Valid status codes: 200, 301, 302, 303, 307, 308.
