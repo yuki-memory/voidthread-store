@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "build": "sh build-cloudflare.sh",
+    "deploy": "npm run build && wrangler pages deploy dist --project-name voidthread-store"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}
