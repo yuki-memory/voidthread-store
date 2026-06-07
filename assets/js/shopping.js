@@ -7,21 +7,49 @@ const elements = {
   amount: document.querySelector('#amount'),
 };
 
-elements.cartBtn.addEventListener('click', () => {
+function currentProductId() {
+  const id =
+    new URLSearchParams(location.search).get('id') ||
+    location.pathname.split('/').slice(-1)[0].replace('.html', '');
+  return isKnownProductId(id) ? id : null;
+}
+
+if (elements.cartBtn) elements.cartBtn.addEventListener('click', () => {
+  const id = currentProductId();
+  if (!id) {
+    alert('商品が不正です。');
+    return;
+  }
+
   const saveData = {
-    id: new URLSearchParams(location.search).get('id') || location.pathname.split('/').slice(-1)[0].replace('.html', ''),
-    size: !!elements.size ? elements.size.value : null,
-    color: !!elements.color ? elements.color.value : null,
-    amount: Number.parseInt(elements.amount.value),
+    id,
+    size:
+      elements.size && security.SIZE_ALLOWLIST.has(elements.size.value)
+        ? elements.size.value
+        : null,
+    color:
+      elements.color && security.COLOR_ALLOWLIST.has(elements.color.value)
+        ? elements.color.value
+        : null,
+    amount: elements.amount ? Number.parseInt(elements.amount.value, 10) : 1,
   };
 
-  data.cartItems.push(saveData);
+  const sanitized = sanitizeCartItem(saveData);
+  if (!sanitized) return;
+
+  data.cartItems.push(sanitized);
   saveLocalStorage(keys.CART_LIST_KEY, data.cartItems);
 });
 
-elements.wishListBtn.addEventListener('click', () => {
+if (elements.wishListBtn) elements.wishListBtn.addEventListener('click', () => {
+  const id = currentProductId();
+  if (!id) {
+    alert('商品が不正です。');
+    return;
+  }
+
   const saveData = {
-    id: new URLSearchParams(location.search).get('id') || location.pathname.split('/').slice(-1)[0].replace('.html', ''),
+    id,
   };
 
   let change = true;

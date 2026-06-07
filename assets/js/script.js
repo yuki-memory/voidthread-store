@@ -140,7 +140,7 @@ if (!location.pathname.endsWith('list.html')) {
       var form = document.createElement('form');
       form.style.display = 'none';
       form.method = 'get';
-      form.action = '../products/list.html';
+      form.action = pagePath('products/list.html');
 
       var input = document.createElement('input');
       input.type = 'hidden';

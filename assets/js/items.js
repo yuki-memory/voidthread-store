@@ -1,22 +1,22 @@
 const buttons = document.querySelectorAll('.category_selector');
 
 // カテゴリーのクラス名を定義する
-const knownCategories = [
-  'section_tshirt',
-  'section_long',
-  'section_foodie',
-  'section_bag',
-  'section_accessory',
-  'section_goods',
-  'section_bottoms'
-];
+const knownCategories = Array.from(security.CATEGORY_ALLOWLIST).filter(
+  (category) => category !== 'all'
+);
+
+function normalizeCategory(categoryName) {
+  return security.CATEGORY_ALLOWLIST.has(categoryName) ? categoryName : 'all';
+}
 
 function setDisplay(categoryName) {
+  const safeCategoryName = normalizeCategory(categoryName);
+
   // 1. まず全カテゴリーのセクションを非表示にする
   knownCategories.forEach(cat => {
     const section = document.querySelector(`.${cat}`);
     if (section) {
-      if (categoryName === 'all' || !categoryName) {
+      if (safeCategoryName === 'all') {
         section.style.display = 'block';
       } else {
         section.style.display = 'none';
@@ -25,8 +25,8 @@ function setDisplay(categoryName) {
   });
 
   // 2. 選択されたカテゴリーのみ表示する
-  if (categoryName && categoryName !== 'all') {
-    const target = document.querySelector(`.${categoryName}`);
+  if (safeCategoryName !== 'all') {
+    const target = document.querySelector(`.${safeCategoryName}`);
     if (target) {
       target.style.display = 'block';
     }
@@ -36,8 +36,8 @@ function setDisplay(categoryName) {
 // ページ読み込み時の処理
 document.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
-  const filter = params.get('filter');
-  
+  const filter = normalizeCategory(params.get('filter'));
+
   if (filter) {
     setDisplay(filter);
   } else {
@@ -49,10 +49,10 @@ document.addEventListener('DOMContentLoaded', () => {
   buttons.forEach(b => {
     b.addEventListener('click', (e) => {
       e.preventDefault();
-      const cate = b.dataset.cate;
+      const cate = normalizeCategory(b.dataset.cate);
       if (cate) {
         // 選択されたカテゴリーでページをリロードする
-        location.search = `filter=${cate}`;
+        location.search = `filter=${encodeURIComponent(cate)}`;
       }
     });
   });

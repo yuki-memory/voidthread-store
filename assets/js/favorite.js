@@ -1,5 +1,7 @@
 const favoriteContainer = document.querySelector('.favorite_container');
 
+data.wishListItems = sanitizeStoredItems(keys.WISH_LIST_KEY, data.wishListItems);
+
 data.wishListItems.forEach((d) => {
   products.forEach((p) => {
     if (d.id === p.id) {
@@ -7,17 +9,19 @@ data.wishListItems.forEach((d) => {
       wrap.classList.add('favorite_wrap');
       const a = create('a');
       a.classList.add('favorite_img');
+      a.href = `${pagePath('products/detail.html')}?id=${encodeURIComponent(p.id)}`;
       const img = create('img');
-      img.src = p.img;
+      img.src = safeImagePath(p.img);
+      img.alt = p.alt || p.name || 'product image';
       const content = create('div');
       content.classList.add('favorite_content');
       const name = create('h2');
-      name.innerHTML = p.name;
+      name.textContent = p.name;
       const price = create('p');
-      price.innerHTML = `&#165;${p.price}`;
+      price.textContent = `¥${p.price}`;
       const deleteBtn = create('button');
       deleteBtn.classList.add('delete_btn');
-      deleteBtn.innerHTML = '削除';
+      deleteBtn.textContent = '削除';
 
       a.appendChild(img);
 
@@ -38,7 +42,6 @@ data.wishListItems.forEach((d) => {
             );
 
             saveLocalStorage(keys.WISH_LIST_KEY, data.wishListItems);
-            
           }
         });
       });

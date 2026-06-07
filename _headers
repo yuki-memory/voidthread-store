@@ -1,0 +1,35 @@
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://code.jquery.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; connect-src 'none'; upgrade-insecure-requests
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+
+/.env*
+  X-Robots-Tag: noindex
+  Content-Type: text/plain; charset=utf-8
+
+/*.db
+  X-Robots-Tag: noindex
+
+/*.sqlite
+  X-Robots-Tag: noindex
+
+/*.sqlite3
+  X-Robots-Tag: noindex
+
+/*.zip
+  X-Content-Type-Options: nosniff
+  Content-Disposition: attachment
+
+/*.mp3
+  X-Content-Type-Options: nosniff
+  Content-Disposition: attachment
+
+/*.wav
+  X-Content-Type-Options: nosniff
+  Content-Disposition: attachment
+
+/*.flac
+  X-Content-Type-Options: nosniff
+  Content-Disposition: attachment

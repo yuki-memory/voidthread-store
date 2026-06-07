@@ -16,29 +16,52 @@ function renderProductList() {
   const itemList = document.getElementById('dynamic-item-list');
   if (!itemList) return;
 
-  const htmlContent = products
-    .map(
-      (product) => `
-      <div class="section_content">
-        <ul class="item_list">
-          <li class="item">
-            <a href="../products/detail.html?id=${product.id}" class="item_wrap">
-              <div class="item_img">
-                <img src="${product.img}" alt="${product.alt}">
-              </div>
-              <div class="item_text">
-                <p class="item_name">${product.name}</p>
-                <p class="item_price">&yen;${product.price.toLocaleString()}</p>
-              </div>
-            </a>
-          </li>
-        </ul>
-      </div>
-    `
-    )
-    .join('');
+  itemList.replaceChildren();
 
-  itemList.innerHTML = htmlContent;
+  products.forEach((product) => {
+    if (!isKnownProductId(product.id)) return;
+
+    const section = create('div');
+    section.classList.add('section_content');
+
+    const list = create('ul');
+    list.classList.add('item_list');
+
+    const item = create('li');
+    item.classList.add('item');
+
+    const link = create('a');
+    link.classList.add('item_wrap');
+    link.href = `${pagePath('products/detail.html')}?id=${encodeURIComponent(product.id)}`;
+
+    const imageWrap = create('div');
+    imageWrap.classList.add('item_img');
+
+    const image = create('img');
+    image.src = safeImagePath(product.img);
+    image.alt = product.alt || product.name || 'product image';
+
+    const textWrap = create('div');
+    textWrap.classList.add('item_text');
+
+    const name = create('p');
+    name.classList.add('item_name');
+    name.textContent = product.name;
+
+    const price = create('p');
+    price.classList.add('item_price');
+    price.textContent = `¥${Number(product.price).toLocaleString()}`;
+
+    imageWrap.appendChild(image);
+    textWrap.appendChild(name);
+    textWrap.appendChild(price);
+    link.appendChild(imageWrap);
+    link.appendChild(textWrap);
+    item.appendChild(link);
+    list.appendChild(item);
+    section.appendChild(list);
+    itemList.appendChild(section);
+  });
 }
 
 /**
@@ -51,11 +74,18 @@ function renderProductDetail() {
 
   const params = new URLSearchParams(window.location.search);
   const productId = params.get('id');
-  const product = products.find((p) => p.id === productId);
+  const product = isKnownProductId(productId)
+    ? products.find((p) => p.id === productId)
+    : null;
 
   if (!product) {
-    container.innerHTML =
-      "<h2 style='text-align: center; width: 100%; margin: 50px 0;'>商品が見つかりませんでした</h2>";
+    container.replaceChildren();
+    const message = create('h2');
+    message.style.textAlign = 'center';
+    message.style.width = '100%';
+    message.style.margin = '50px 0';
+    message.textContent = '商品が見つかりませんでした';
+    container.appendChild(message);
     return;
   }
 
@@ -65,23 +95,35 @@ function renderProductDetail() {
   const descEl = container.querySelector('.product_description');
 
   if (nameEl) nameEl.textContent = product.name;
-  if (priceEl) priceEl.innerHTML = `&yen;${product.price.toLocaleString()}`;
-  if (descEl) descEl.innerHTML = product.description;
+  if (priceEl) priceEl.textContent = `¥${Number(product.price).toLocaleString()}`;
+  if (descEl) {
+    descEl.replaceChildren();
+    appendLineBreaks(descEl, product.description);
+  }
+
+  const images = safeArray(product.images).map(safeImagePath);
 
   // メイン画像を設定
   const mainImageDiv = container.querySelector('.main_image');
-  if (mainImageDiv && product.images.length > 0) {
-    mainImageDiv.innerHTML = `<img src="${product.images[0]}" alt="${product.alt}" />`;
+  if (mainImageDiv && images.length > 0) {
+    mainImageDiv.replaceChildren();
+    const image = create('img');
+    image.src = images[0];
+    image.alt = product.alt || product.name || 'product image';
+    mainImageDiv.appendChild(image);
   }
 
   // サムネイル画像を設定（最大2枚）
   const thumbnailDiv = container.querySelector('.thumbnail_container');
-  if (thumbnailDiv && product.images.length > 0) {
-    const maxThumbnails = Math.min(product.images.length, 2);
-    thumbnailDiv.innerHTML = product.images
-      .slice(0, maxThumbnails)
-      .map((src) => `<img src="${src}" alt="${product.alt}" />`)
-      .join('');
+  if (thumbnailDiv && mainImageDiv && images.length > 0) {
+    const maxThumbnails = Math.min(images.length, 2);
+    thumbnailDiv.replaceChildren();
+    images.slice(0, maxThumbnails).forEach((src) => {
+      const image = create('img');
+      image.src = src;
+      image.alt = product.alt || product.name || 'product image';
+      thumbnailDiv.appendChild(image);
+    });
 
     // サムネイルクリックでメイン画像を切り替える
     const mainImg = mainImageDiv.querySelector('img');
